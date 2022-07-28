@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Ingredient from './Ingredient'
 
-class BurgerPane extends Component {
+const BurgerPane= () => {
     
-	render() {
+	
     // map over all the added burger bits
     // still going to use the Ingredient Comp
     let burgerBits = this.props.ingredients.map((ing, idx) => (
@@ -27,7 +27,7 @@ class BurgerPane extends Component {
            
          )
 			
-	}
+	
 }
 
 export default BurgerPane

@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { useState } from 'react'
 import IngredientList from './IngredientList'
 import BurgerPane from './BurgerPane'
 
-class BurgerStack extends Component {
-	state = {
-		ingredients: [
+const BurgerStack = (props) => {
+	// state = {
+		// ingredients: 
+		[
 			{ name: 'Kaiser Bun', color: 'saddlebrown' },
 			{ name: 'Sesame Bun', color: 'sandybrown' },
 			{ name: 'Gluten Free Bun', color: 'peru' },
@@ -18,12 +19,15 @@ class BurgerStack extends Component {
 			{ name: 'Bacon', color: 'maroon' },
 			{ name: 'Onion', color: 'lightyellow' },
 		],
-		burgerIngredients: [],
-	}
+		// burgerIngredients: [],
+        const [ingredients, setIngredients] = useState({name: '', color: ''})
+		const [burgerIngredients, setBurgerIngredients] = useState([])
+	//}
+
 
 	// add to the burger
 	// click on an ing and use the `event` to target it
-	addToStack = (e) => {
+	const addToStack = (e) => {
 		// grab the color
 		const ingColor = e.target.style.backgroundColor
 		// grab the name
