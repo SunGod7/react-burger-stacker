@@ -3,27 +3,29 @@ import IngredientList from './IngredientList'
 import BurgerPane from './BurgerPane'
 
 
-	// state = {
-		const ingredient = [
-		
-			{ name: 'Kaiser Bun', color: 'saddlebrown' },
-			{ name: 'Sesame Bun', color: 'sandybrown' },
-			{ name: 'Gluten Free Bun', color: 'peru' },
-			{ name: 'Lettuce Wrap', color: 'olivedrab' },
-			{ name: 'Beef Patty', color: '#3F250B' },
-			{ name: 'Soy Patty', color: '#3F250B' },
-			{ name: 'Black Bean Patty', color: '#3F250B' },
-			{ name: 'Chicken Patty', color: 'burlywood' },
-			{ name: 'Lettuce', color: 'lawngreen' },
-			{ name: 'Tomato', color: 'tomato' },
-			{ name: 'Bacon', color: 'maroon' },
-			{ name: 'Onion', color: 'lightyellow' },
-		]
-		// burgerIngredients: [],
+const BurgerStack = () => {
 
-		const BurgerStack = () => {
-        const [ingredients, setIngredients] = useState({name: '', color: ''})
-		const [burgerIngredients, setBurgerIngredients] = useState([])
+	// state = {
+	const ingredients = [
+
+		{ name: 'Kaiser Bun', color: 'saddlebrown' },
+		{ name: 'Sesame Bun', color: 'sandybrown' },
+		{ name: 'Gluten Free Bun', color: 'peru' },
+		{ name: 'Lettuce Wrap', color: 'olivedrab' },
+		{ name: 'Beef Patty', color: '#3F250B' },
+		{ name: 'Soy Patty', color: '#3F250B' },
+		{ name: 'Black Bean Patty', color: '#3F250B' },
+		{ name: 'Chicken Patty', color: 'burlywood' },
+		{ name: 'Lettuce', color: 'lawngreen' },
+		{ name: 'Tomato', color: 'tomato' },
+		{ name: 'Bacon', color: 'maroon' },
+		{ name: 'Onion', color: 'lightyellow' },
+	]
+	// burgerIngredients: [],
+
+
+	//const [ingredients, setIngredients] = useState({name: '', color: ''})
+	const [burgerIngredients, setBurgerIngredients] = useState([])
 	//}
 
 
@@ -35,50 +37,51 @@ import BurgerPane from './BurgerPane'
 		// grab the name
 		const ingName = e.target.innerText
 		// add to state
-		setBurgerIngredients({
-			burgerIngredients: [
-				{ name: ingName, color: ingColor },
-                // spread op takes what was in the array and copies it over here
-				...burgerIngredients,
-			],
-		})
+		setBurgerIngredients(
+			[{ name: ingName, color: ingColor }, ...burgerIngredients,]
+
+
+			// spread op takes what was in the array and copies it over here
+		)
+
+
 	}
 
 	// remove from burger
-    const removeFromStack = (e) => {
-        // select an ing by id
-        const clickIndex = e.target.id
-        // copy the whole burger
-        const currBurger = burgerIngredients.slice()
-        // remove that ing
-        currBurger.splice(clickIndex, 1)
-        // set that state
-        setBurgerIngredients({burgerIngredients: currBurger})
-    }
+	const removeFromStack = (e) => {
+		// select an ing by id
+		const clickIndex = e.target.id
+		// copy the whole burger
+		const currBurger = burgerIngredients.slice()
+		// remove that ing
+		currBurger.splice(clickIndex, 1)
+		// set that state
+		setBurgerIngredients({ burgerIngredients: currBurger })
+	}
 
 	// clear said burger
-    const clearBurger = () => {
-        // set state back to an empty array
-        // this.setState(() => {
-        //     return {
-        //         burgerIngredients: []
-        //     }
-        // })
-        setBurgerIngredients([])
-    }
+	const clearBurger = () => {
+		// set state back to an empty array
+		// this.setState(() => {
+		//     return {
+		//         burgerIngredients: []
+		//     }
+		// })
+		setBurgerIngredients([])
+	}
 
 
-	
-		return (
-			<>
-				<IngredientList
-					ingredients={ingredient}
-					add={addToStack}
-				/>
-				<BurgerPane ingredients={burgerIngredients} remove={removeFromStack} clear={clearBurger}/>
-			</>
-		)
-	
+
+	return (
+		<>
+			<IngredientList
+				ingredients={ingredients}
+				add={addToStack}
+			/>
+			<BurgerPane ingredients={burgerIngredients} remove={removeFromStack} clear={clearBurger} />
+		</>
+	)
+
 }
 
 export default BurgerStack

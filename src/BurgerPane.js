@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import Ingredient from './Ingredient'
 
-const BurgerPane= (props) => {
+const BurgerPane = (props) => {
     
-	const [ingredients, setIngredients] = useState(null)
+	//const [ingredients, setIngredients] = useState(null)
     // map over all the added burger bits
     // still going to use the Ingredient Comp
-    let burgerBits = ingredients.map((ing, idx) => (
+    let burgerBits = props.ingredients.map((ing, idx) => (
         <li key={idx}>
             <Ingredient 
                 itemKey={idx}
