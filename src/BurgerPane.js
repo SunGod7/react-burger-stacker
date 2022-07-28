@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Ingredient from './Ingredient'
 
-const BurgerPane= () => {
+const BurgerPane= (props) => {
     
-	
+	const [ingredients, setIngredients] = useState(null)
     // map over all the added burger bits
     // still going to use the Ingredient Comp
-    let burgerBits = this.props.ingredients.map((ing, idx) => (
+    let burgerBits = ingredients.map((ing, idx) => (
         <li key={idx}>
             <Ingredient 
                 itemKey={idx}
                 ingredient={ing}
-                clickFunc={this.props.remove}
+                clickFunc={props.remove}
             />
         </li>
     ))
@@ -22,7 +22,7 @@ const BurgerPane= () => {
                 <ul>
                     {burgerBits}
                 </ul>
-                <button onClick={this.props.clear}>Clear Burger</button>
+                <button onClick={props.clear}>Clear Burger</button>
              </section>
            
          )

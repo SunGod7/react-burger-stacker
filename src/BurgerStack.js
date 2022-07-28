@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import IngredientList from './IngredientList'
 import BurgerPane from './BurgerPane'
 
-const BurgerStack = (props) => {
+
 	// state = {
-		// ingredients: 
-		[
+		const ingredient = [
+		
 			{ name: 'Kaiser Bun', color: 'saddlebrown' },
 			{ name: 'Sesame Bun', color: 'sandybrown' },
 			{ name: 'Gluten Free Bun', color: 'peru' },
@@ -18,8 +18,10 @@ const BurgerStack = (props) => {
 			{ name: 'Tomato', color: 'tomato' },
 			{ name: 'Bacon', color: 'maroon' },
 			{ name: 'Onion', color: 'lightyellow' },
-		],
+		]
 		// burgerIngredients: [],
+
+		const BurgerStack = () => {
         const [ingredients, setIngredients] = useState({name: '', color: ''})
 		const [burgerIngredients, setBurgerIngredients] = useState([])
 	//}
@@ -33,50 +35,50 @@ const BurgerStack = (props) => {
 		// grab the name
 		const ingName = e.target.innerText
 		// add to state
-		this.setState({
+		setBurgerIngredients({
 			burgerIngredients: [
 				{ name: ingName, color: ingColor },
                 // spread op takes what was in the array and copies it over here
-				...this.state.burgerIngredients,
+				...burgerIngredients,
 			],
 		})
 	}
 
 	// remove from burger
-    removeFromStack = (e) => {
+    const removeFromStack = (e) => {
         // select an ing by id
         const clickIndex = e.target.id
         // copy the whole burger
-        const currBurger = this.state.burgerIngredients.slice()
+        const currBurger = burgerIngredients.slice()
         // remove that ing
         currBurger.splice(clickIndex, 1)
         // set that state
-        this.setState({burgerIngredients: currBurger})
+        setBurgerIngredients({burgerIngredients: currBurger})
     }
 
 	// clear said burger
-    clearBurger = () => {
+    const clearBurger = () => {
         // set state back to an empty array
         // this.setState(() => {
         //     return {
         //         burgerIngredients: []
         //     }
         // })
-        this.setState({ burgerIngredients: [] })
+        setBurgerIngredients([])
     }
 
 
-	render() {
+	
 		return (
 			<>
 				<IngredientList
-					ingredients={this.state.ingredients}
-					add={this.addToStack}
+					ingredients={ingredient}
+					add={addToStack}
 				/>
-				<BurgerPane ingredients={this.state.burgerIngredients} remove={this.removeFromStack} clear={this.clearBurger}/>
+				<BurgerPane ingredients={burgerIngredients} remove={removeFromStack} clear={clearBurger}/>
 			</>
 		)
-	}
+	
 }
 
 export default BurgerStack
